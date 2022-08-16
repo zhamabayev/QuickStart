@@ -1,7 +1,6 @@
 package lesson5;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Test;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -61,8 +60,8 @@ public class SaucedemoTest {
                 .click();
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"add-to-cart-sauce-labs-bolt-t-shirt\"]")))
                 .click();
-        Assertions.assertEquals(driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span"))
-                .getAttribute("3"), true);
+        Assertions.assertEquals(driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a"))
+                .getAccessibleName().equalsIgnoreCase("3"), true);
     }
 
     @Test
@@ -94,6 +93,7 @@ public class SaucedemoTest {
     @DisplayName("Положительная проверка группы ссылок для раздела информации О компании")
     public void displayOfGroupsUrlsForDivisionAbaoutCompany(){
         driver.get("https://gb.ru/");
+
 
     }
 
