@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -89,12 +90,21 @@ public class SaucedemoTest {
     }
 
     @Test
-    //проверить отображение ссылок на сойте geekbrains для группы ссылок раздела информации о компании
+    //проверить отображение ссылок на сойте geekbrains для группы ссылок раздела информации о компании (тренировка)
     @DisplayName("Положительная проверка группы ссылок для раздела информации О компании")
     public void displayOfGroupsUrlsForDivisionAbaoutCompany(){
         driver.get("https://gb.ru/");
-
-
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[@id=\"header-monolit\"]/div/header/div[1]/div[1]/div[1]/div"))).click();
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[@id=\"header-monolit\"]/div/header/div[3]/div/div[1]/nav/ul/li[5]/a")));
+        actions.moveToElement(driver.findElement(By.xpath(
+                "//*[@id=\"header-monolit\"]/div/header/div[3]/div/div[1]/nav/ul/li[5]/a")))
+                .build()
+                .perform();
+        Assertions.assertEquals(driver.findElement(
+                By.xpath("//*[@id=\"header-monolit\"]/div/header/div[3]/div/div[2]/div[2]/div[5]/div[1]/nav/ul/li[1]/div/a"))
+                .isDisplayed(), true);
     }
 
     @AfterEach
