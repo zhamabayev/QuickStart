@@ -92,7 +92,7 @@ public class SaucedemoTest {
     @Test
     //проверить отображение ссылок на сойте geekbrains для группы ссылок раздела информации о компании (тренировка)
     @DisplayName("Положительная проверка группы ссылок для раздела информации О компании")
-    public void displayOfGroupsUrlsForDivisionAbaoutCompany(){
+    public void displayOfGroupsUrlsForDivisionAboutCompany(){
         driver.get("https://gb.ru/");
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//*[@id=\"header-monolit\"]/div/header/div[1]/div[1]/div[1]/div"))).click();
